@@ -11,7 +11,7 @@ import javax.persistence.Id;
 
 @Entity // DB가 해당 객체를 인식 가능!
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor //디폴트 생성자를 추가!
 @ToString
 public class Article {
 
