@@ -44,11 +44,13 @@ public class ArticleService {
         // 2: 대상 엔티티 찾기
         Article target = articleRepository.findById(id).orElse(null);
 
-        // 3: 잘못된 요청 처리(대상이 없거나, id가 다른 경우
+        // 3: 잘못된 요청 처리(대상이 없거나, id가 다른 경우)
         if (target == null || id != article.getId()) {
             log.info("잘못된 요정! id: {}, article: {}", id, article.toString());
             return null;
         }
+        // 3-1: 잘못된 요청 처리(id값만 주어졌을 경우)
+        if (article.getContent() == null && article.getTitle() == null) return null;
 
         // 4: 업데이트 및 정상 응답(200)
         target.patch(article);
