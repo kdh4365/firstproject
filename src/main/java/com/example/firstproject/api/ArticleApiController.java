@@ -42,7 +42,7 @@ public class ArticleApiController {
     //Patch
     @PatchMapping("api/articles/{id}")
     public ResponseEntity<Article> update(@PathVariable Long id,
-                                         @RequestBody ArticleForm dto) {
+                                          @RequestBody ArticleForm dto) {
         Article updated = articleService.update(id, dto);
         return (updated != null) ?
                 ResponseEntity.status(HttpStatus.OK).body(updated):
